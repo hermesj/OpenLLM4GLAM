@@ -6,7 +6,7 @@ Material für eine Barcamp-Session auf der Tagung [**„Out of Frame – 25 Jahr
 
 > *English:* Hands-on material for a barcamp session at the prometheus conference *Out of Frame* (Cologne, 30 Sep – 2 Oct 2026), aimed at people from galleries, libraries, archives and museums (GLAM). Participants run an open-weight vision language model (Qwen2.5-VL) locally on their own laptops with [Ollama](https://ollama.com), and use it to tag and classify a small set of public-domain images. The material is in German; the setup steps below work the same in any language.
 
-Dieses Repository enthält alles, was du für den Workshop brauchst – außer Ollama und dem Modell selbst, die du über die Links und Befehle unten herunterlädst. **Am besten installierst du beides schon vor dem Workshop**, denn das Modell ist 3–6 GB groß. Für alle, die das nicht geschafft haben, gibt es vor Ort USB-Sticks.
+Dieses Repository enthält alles, was du für die Barcamp-Session brauchst – außer Ollama und dem Modell selbst, die du über die Links und Befehle unten herunterlädst. **Am besten installierst du beides schon vor der Session**, denn das Modell ist 3–7 GB groß. Kurzentschlossene können es aber auch den Anfang der Session nutzen, falls das WLAN einknickt, gibt es vor Ort auch USB-Sticks mit den erforderlichen Dateien.
 
 ## Was du brauchst
 
@@ -30,7 +30,8 @@ Nach dem Start erscheint das Lama-Symbol in der Menüleiste (Mac) bzw. unten rec
 
 ## 2 · Modell herunterladen
 
-Im Terminal (Mac: Programm »Terminal«, Windows: »Eingabeaufforderung« oder »PowerShell«):
+Entweder über die graphische Benutzeroberfläche die genauen Modellnamen eingeben und eine Konversation starten (erst dann wird das Modell auch geladen) oder –
+im Terminal (Mac: Programm »Terminal«, Windows: »Eingabeaufforderung« oder »PowerShell«):
 
 ```
 ollama pull qwen2.5vl:3b
