@@ -56,9 +56,9 @@ Faustregel: Bei üblicher Kompression (4-Bit-Quantisierung) braucht ein Modell g
 
 | Ausstattung | Modellgröße | Beispiele mit Bildverarbeitung |
 |---|---|---|
-| **Arbeitsplatz-PC / MacBook** (8–16 GB) | bis ca. 8B | `qwen2.5vl:3b` / `qwen2.5vl:7b` (3 / 6 GB, heute im Einsatz) · `gemma4:e4b` · **voll offen:** Molmo 2-O 7B (Ai2, auf Olmo 3) · Apertus 1.5 8B (Swiss AI) |
+| **Arbeitsplatz-PC / MacBook** (8–16 GB) | bis ca. 8B | `qwen2.5vl:3b` / `qwen2.5vl:7b` (3 / 6 GB, heute im Einsatz) · `gemma4:e4b` · *voll offen: Molmo 2-O 7B (Ai2, auf Olmo 3), Apertus 1.5 8B (Swiss AI)* |
 | **High-End-Arbeitsplatz** (z. B. Grafikkarte mit 16–24 GB, 64 GB RAM, oder Mac mit 64 GB) | ca. 12–32B | `gemma4:12b` (8 GB) · `mistral-small3.2:24b` (15 GB) · `gemma4:26b` (MoE, 16–19 GB) · `qwen3-vl:30b` (MoE, 20 GB) · *voll offen: in dieser Größe derzeit kein Bildmodell bekannt* |
-| **Server** (z. B. Grafikkarten mit 48–80 GB) | 70B und mehr | **voll offen:** Apertus 1.5 70B · `qwen2.5vl:72b` (49 GB) · `llama4:scout` (MoE, 67 GB) · `llama4:maverick` (MoE, 245 GB, mehrere GPUs) |
+| **Server** (z. B. Grafikkarten mit 48–80 GB) | 70B und mehr | `qwen2.5vl:72b` (49 GB) · `llama4:scout` (MoE, 67 GB) · `mistral-medium-3.5` (80 GB) · *voll offen: Apertus 1.5 70B (Swiss AI)* |
 
 Angaben in `code` sind direkt in Ollama verfügbar (mit Download-Größe), die voll offenen Modelle bisher nur über Hugging Face.
 

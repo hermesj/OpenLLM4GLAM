@@ -56,10 +56,19 @@ def frage(prompt, bild, max_tokens):
         "messages": [{"role": "user", "content": prompt,
                       "images": [base64.b64encode(bild.read_bytes()).decode()]}],
     }).encode()
-    req = urllib.request.Request(OLLAMA + "/api/chat", data=daten,
-                                 headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=MAX_SEKUNDEN) as r:
-        return json.loads(r.read())["message"]["content"].strip()
+    def senden(nutzlast):
+        req = urllib.request.Request(OLLAMA + "/api/chat", data=json.dumps(nutzlast).encode(),
+                                     headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=MAX_SEKUNDEN) as r:
+            return json.loads(r.read())["message"]
+    nutzlast = json.loads(daten)
+    antwort = senden(nutzlast)
+    # Manche Modelle (z. B. qwen3-vl) "denken" erst nach und verbrauchen dabei die erlaubte
+    # Antwortlänge. Bleibt die Antwort leer, noch einmal ohne Nachdenken fragen.
+    if not antwort.get("content", "").strip() and antwort.get("thinking"):
+        nutzlast["think"] = False
+        antwort = senden(nutzlast)
+    return antwort.get("content", "").strip()
 
 
 def katalogangaben():
@@ -121,7 +130,8 @@ def main():
     meta = katalogangaben() if MIT_METADATEN else {}
     if MIT_METADATEN:
         variante += " + Katalogangaben"
-    ziel = ORDNER / f"ergebnisse_{datetime.now():%Y-%m-%d_%H%M}.csv"
+    modell_kurz = re.sub(r"[^A-Za-z0-9.-]+", "-", MODELL)          # qwen2.5vl:3B -> qwen2.5vl-3B
+    ziel = ORDNER / f"ergebnisse_{datetime.now():%Y-%m-%d_%H%M}_{modell_kurz}.csv"
     print(f"Modell: {MODELL} · Kategorien {variante} · {DURCHLAEUFE} Durchlauf/Durchläufe")
     print(f"{len(bilder)} Bilder, das dauert je nach Rechner einige Minuten …\n")
 

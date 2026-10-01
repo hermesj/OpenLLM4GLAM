@@ -18,6 +18,17 @@ Dieses Repository enthält alles, was du für die Barcamp-Session brauchst – a
 | Arbeitsspeicher | 8 GB → Modell `qwen2.5vl:3b` | 16 GB → Modell `qwen2.5vl:7b` |
 | Speicherplatz | ca. 5 GB | ca. 10 GB |
 
+## Ohne Internet: mit dem USB-Stick
+
+Im Workshop gehen USB-Sticks herum. Wer einen bekommt, braucht die Schritte 1, 2 und 4 unten nicht:
+
+1. Ordner **`1_Ollama_installieren`**: Installer für dein System starten. Windows: `OllamaSetup.exe` erst auf den Schreibtisch ziehen, dann von dort installieren. Linux: `bash ollama_starten_linux.sh`.
+2. Ordner **`2_Modell_kopieren`**: Kopierskript für dein System starten (Mac: Doppelklick auf `modell_kopieren_mac.command`, Windows: `modell_kopieren_windows.bat`, Linux: `bash modell_kopieren_linux.sh`) und das Modell wählen – `3b` bei 8 GB Arbeitsspeicher. Danach Ollama beenden und neu starten.
+3. **Stick weitergeben.** Alles Weitere geht ohne ihn.
+4. Ordner **`3_Workshop`** auf den eigenen Rechner kopieren, dann weiter mit Schritt 3 (Kontextlänge) unten.
+
+Ausführlicher steht das in `1_LIESMICH.txt` auf dem Stick.
+
 ## 1 · Ollama installieren
 
 - **Mac und Windows:** Installer von <https://ollama.com/download> laden und starten. Auf dem Mac Ollama in den Ordner »Programme« ziehen.
@@ -83,7 +94,16 @@ Das Skript `bilder_auswerten.py` schickt alle Bilder an das Modell und schreibt 
 - **Windows:** Doppelklick auf `bilder_auswerten_windows.bat` – braucht [Python](https://www.python.org/downloads/windows/)
 - **Linux / Terminal:** `python3 bilder_auswerten.py`
 
-Einstellungen stehen oben im Skript: Modell (`"auto"` nimmt das größte installierte qwen2.5vl), Kategorien mit Definitionen, Katalogangaben aus `bildnachweise.csv` im Prompt. Ein bestimmtes Modell lässt sich auch beim Aufruf angeben: `python3 bilder_auswerten.py qwen2.5vl:3b`.
+Einstellungen stehen oben im Skript: Modell (`"auto"` nimmt das größte installierte qwen2.5vl), Kategorien mit Definitionen, Katalogangaben aus `bildnachweise.csv` im Prompt.
+
+**Andere Modelle vergleichen:** Den Modellnamen beim Aufruf angeben – er landet dann auch im Dateinamen, zum Beispiel `ergebnisse_2026-10-01_1430_qwen3-vl-8b.csv`:
+
+```
+python3 bilder_auswerten.py qwen2.5vl:3b
+python3 bilder_auswerten.py qwen3-vl:8b
+```
+
+Unter Windows funktioniert das genauso mit `bilder_auswerten_windows.bat qwen3-vl:8b` in der Eingabeaufforderung. Das Modell muss vorher mit `ollama pull` geladen sein.
 
 ## Die Bilder
 
