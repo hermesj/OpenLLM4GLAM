@@ -96,14 +96,14 @@ Das Skript `bilder_auswerten.py` schickt alle Bilder an das Modell und schreibt 
 
 Einstellungen stehen oben im Skript: Modell (`"auto"` nimmt das größte installierte qwen2.5vl), Kategorien mit Definitionen, Katalogangaben aus `bildnachweise.csv` im Prompt.
 
-**Andere Modelle vergleichen:** Den Modellnamen beim Aufruf angeben – er landet dann auch im Dateinamen, zum Beispiel `ergebnisse_2026-10-01_1430_qwen3-vl-8b.csv`:
+**Andere Modelle vergleichen:** Den Modellnamen beim Aufruf angeben – er landet dann auch im Dateinamen, zum Beispiel `ergebnisse_2026-10-01_1430_qwen3-vl-8b-instruct.csv`:
 
 ```
 python3 bilder_auswerten.py qwen2.5vl:3b
-python3 bilder_auswerten.py qwen3-vl:8b
+python3 bilder_auswerten.py qwen3-vl:8b-instruct
 ```
 
-Unter Windows funktioniert das genauso mit `bilder_auswerten_windows.bat qwen3-vl:8b` in der Eingabeaufforderung. Das Modell muss vorher mit `ollama pull` geladen sein.
+Unter Windows funktioniert das genauso mit `bilder_auswerten_windows.bat qwen3-vl:8b-instruct` in der Eingabeaufforderung. Das Modell muss vorher mit `ollama pull` geladen sein. Bei qwen3-vl die Variante `-instruct` nehmen: Die Standardvariante „denkt" vor jeder Antwort nach und liefert im Skript leere Ergebnisse.
 
 ## Die Bilder
 

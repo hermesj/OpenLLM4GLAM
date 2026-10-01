@@ -6,7 +6,7 @@ und schreibt Kategorie und Schlagwörter in eine CSV-Datei.
 Voraussetzung: Die Ollama-App läuft, das Modell ist geladen (ollama pull qwen2.5vl:7b).
 Nur Python-Standardbibliothek, keine Installation nötig.
 """
-import base64, csv, json, os, re, sys, time, urllib.request
+import base64, csv, json, os, re, sys, time, urllib.error, urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -62,11 +62,14 @@ def frage(prompt, bild, max_tokens):
         with urllib.request.urlopen(req, timeout=MAX_SEKUNDEN) as r:
             return json.loads(r.read())["message"]
     nutzlast = json.loads(daten)
-    antwort = senden(nutzlast)
-    # Manche Modelle (z. B. qwen3-vl) "denken" erst nach und verbrauchen dabei die erlaubte
-    # Antwortlänge. Bleibt die Antwort leer, noch einmal ohne Nachdenken fragen.
-    if not antwort.get("content", "").strip() and antwort.get("thinking"):
-        nutzlast["think"] = False
+    # Manche Modelle (z. B. qwen3-vl) "denken" vor der Antwort und verbrauchen dabei die
+    # erlaubte Antwortlänge. Deshalb das Nachdenken abschalten. Modelle, die das nicht
+    # kennen, lehnen die Option ggf. ab – dann ohne sie fragen.
+    nutzlast["think"] = False
+    try:
+        antwort = senden(nutzlast)
+    except urllib.error.HTTPError:
+        del nutzlast["think"]
         antwort = senden(nutzlast)
     return antwort.get("content", "").strip()
 
@@ -140,6 +143,7 @@ def main():
         w.writerow(["Bild", "Durchlauf", "Kategorie (Modell)", "Kategorie (Mensch)",
                     "Schlagwörter", "Kategorie-Antwort roh", "Modell", "Variante", "Sekunden"])
         f.flush()
+        leer = 0
         for lauf in range(1, DURCHLAEUFE + 1):
             for bild in bilder:
                 start = time.time()
@@ -156,12 +160,18 @@ def main():
                     else:
                         roh, kat, tags = f"FEHLER: {e}", "?", ""
                 dauer = round(time.time() - start)
+                if not roh and not tags:
+                    leer += 1
                 w.writerow([bild.name, lauf, kat, "", einzeilig(tags), einzeilig(roh),
                             MODELL, variante, dauer])
                 f.flush()
                 print(f"[{lauf}] {bild.name:26} {kat:12} {einzeilig(tags)[:60]}")
 
     print(f"\nFertig. Ergebnisse: {ziel.name}")
+    if leer == len(bilder) * DURCHLAEUFE:
+        print("\nAchtung: Das Modell hat keine einzige Antwort geliefert. Vermutlich ein Modell, das vor\n"
+              "der Antwort »nachdenkt« und sich nicht abschalten lässt (z. B. qwen3-vl:8b).\n"
+              "Dann die Variante ohne Nachdenken nehmen, z. B.:  ollama pull qwen3-vl:8b-instruct")
 
 
 if __name__ == "__main__":
