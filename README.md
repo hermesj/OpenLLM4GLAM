@@ -18,7 +18,7 @@ Dieses Repository enthält alles, was du für die Barcamp-Session brauchst – a
 | Arbeitsspeicher | 8 GB → Modell `qwen2.5vl:3b` | 16 GB → Modell `qwen2.5vl:7b` |
 | Speicherplatz | ca. 5 GB | ca. 10 GB |
 
-## Ohne Internet: mit dem USB-Stick
+## ENTWEDER: Ohne Internet: mit dem USB-Stick
 
 Im Workshop gehen USB-Sticks herum. Wer einen bekommt, braucht die Schritte 1, 2 und 4 unten nicht:
 
@@ -29,6 +29,7 @@ Im Workshop gehen USB-Sticks herum. Wer einen bekommt, braucht die Schritte 1, 2
 
 Ausführlicher steht das in `1_LIESMICH.txt` auf dem Stick.
 
+## ODER: Mit Internet
 ## 1 · Ollama installieren
 
 - **Mac und Windows:** Installer von <https://ollama.com/download> laden und starten. Auf dem Mac Ollama in den Ordner »Programme« ziehen.
