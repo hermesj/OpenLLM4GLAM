@@ -1,4 +1,5 @@
 # OpenLLM4GLAM
+Diese Seite ist auch erreichbar unter [https://tinyurl.com/prometheus-25](https://tinyurl.com/prometheus-25) 
 
 **Offene Sprachmodelle lokal ausprobieren: Bilder verschlagworten und kategorisieren**
 
