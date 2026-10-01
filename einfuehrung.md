@@ -12,6 +12,12 @@ Wer ein Sprachmodell über eine Online-Schnittstelle nutzt, gibt die Kontrolle a
 
 Dazu kommen Abhängigkeiten von wenigen Anbietern. Offene Modelle holen einen Teil dieser Kontrolle zurück.
 
+Für Gedächtnisinstitutionen wiegt das besonders schwer:
+
+- **Rechte:** Viele Bestände sind urheberrechtlich geschützt oder nur unter Auflagen nutzbar – sie dürfen nicht einfach an einen Online-Dienst gehen.
+- **Personendaten:** Archivgut, Fotos und Korrespondenz enthalten oft personenbezogene Daten, für die Schutzfristen und Datenschutz gelten.
+- **Langfristigkeit:** Archive, Bibliotheken und Museen planen in Jahrzehnten. Ein Arbeitsablauf, der an einem Dienst hängt, der morgen anders funktioniert oder eingestellt wird, passt dazu schlecht. Eine Modelldatei lässt sich dagegen archivieren wie andere digitale Objekte auch.
+
 ## Was heißt „offen"?
 
 „Open" ist kein Ja/Nein, sondern ein Spektrum. Liesenfeld & Dingemanse (2024) unterscheiden drei Dimensionen:
