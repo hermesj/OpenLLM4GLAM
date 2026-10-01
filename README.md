@@ -73,7 +73,7 @@ Unter Linux wird das Bild direkt im Befehl übergeben:
 ollama run qwen2.5vl:3b ./bilder/bild_01.jpg Beschreibe das Bild.
 ```
 
-Die Prompts, mit denen wir im Workshop arbeiten, stehen in [`prompts.md`](prompts.md).
+Die Prompts, mit denen wir im Workshop arbeiten, stehen in [`prompts.md`](prompts.md). Eine kurze Einführung in offene Sprachmodelle – was „offen" heißt, welche Modelle auf welchem Rechner laufen, welche Werkzeuge es gibt – steht in [`einfuehrung.md`](einfuehrung.md).
 
 ## Automatische Auswertung aller Bilder
 
