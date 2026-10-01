@@ -36,7 +36,7 @@ ollama show qwen2.5vl:3b --license
 | Methodische Transparenz (Trainingsdaten, Architektur) | ❌ | ❌ | ✓ |
 | Datenschutz, keine externe Governance | ❌ | ✓ | ✓ |
 | Interpretierbarkeit | ❌ | ❓ | ❓ |
-| **Beispiele** | GPT, Claude, Gemini | Qwen, Llama, Gemma, Mistral | OLMo (Ai2), Apertus (ETH/EPFL), Molmo 2-O (Ai2) |
+| **Beispiele** | GPT, Claude, Gemini | Qwen, Llama, Gemma, Mistral | Olmo 3 (Ai2), Apertus (ETH/EPFL/CSCS), Molmo 2-O (Ai2) |
 
 - **Open Weights:** Die Modelldatei liegt bei mir, ich kann sie lokal betreiben und archivieren. Womit sie trainiert wurde, weiß ich nicht.
 - **Truly Open:** Zusätzlich sind Trainingsdaten, Code und Dokumentation offen – das Modell lässt sich nachvollziehen und im Prinzip nachbauen.
@@ -48,15 +48,17 @@ Initiativen für wirklich offene Modelle: [OLMo / ATOM Project](https://atomproj
 
 Faustregel: Bei üblicher Kompression (4-Bit-Quantisierung) braucht ein Modell grob **0,6 GB Arbeitsspeicher pro Milliarde Parameter**, plus Puffer für Bilder und Kontext. Die Anwendung ist dabei viel genügsamer als das Nachtrainieren (Finetuning).
 
-| Ausstattung | Modellgröße | Beispiele mit Bildverarbeitung (Ollama, Download-Größe) |
+| Ausstattung | Modellgröße | Beispiele mit Bildverarbeitung |
 |---|---|---|
-| **Arbeitsplatz-PC / MacBook** (8–16 GB) | bis ca. 8B | `qwen2.5vl:3b` (3 GB) · `qwen2.5vl:7b` (6 GB) · `qwen3-vl:8b` (6 GB) · `gemma4:e4b` |
-| **High-End-Arbeitsplatz** (z. B. Grafikkarte mit 16–24 GB, 64 GB RAM, oder Mac mit 64 GB) | ca. 12–32B | `gemma4:12b` (8 GB) · `gemma4:26b` (MoE, 16–19 GB) · `qwen3-vl:30b` (MoE, 20 GB) · `qwen2.5vl:32b` (21 GB) |
-| **Server** (z. B. Grafikkarten mit 48–80 GB) | 70B und mehr | `qwen2.5vl:72b` (49 GB) · InternVL3-78B · `qwen3-vl:235b` (MoE, 143 GB, mehrere GPUs) · Llama 4 Maverick (MoE) |
+| **Arbeitsplatz-PC / MacBook** (8–16 GB) | bis ca. 8B | `qwen2.5vl:3b` / `qwen2.5vl:7b` (3 / 6 GB, heute im Einsatz) · `gemma4:e4b` · **voll offen:** Molmo 2-O 7B (Ai2, auf Olmo 3) · Apertus 1.5 8B (Swiss AI) |
+| **High-End-Arbeitsplatz** (z. B. Grafikkarte mit 16–24 GB, 64 GB RAM, oder Mac mit 64 GB) | ca. 12–32B | `gemma4:12b` (8 GB) · `mistral-small3.2:24b` (15 GB) · `gemma4:26b` (MoE, 16–19 GB) · `qwen3-vl:30b` (MoE, 20 GB) · *voll offen: in dieser Größe derzeit kein Bildmodell bekannt* |
+| **Server** (z. B. Grafikkarten mit 48–80 GB) | 70B und mehr | **voll offen:** Apertus 1.5 70B · `qwen2.5vl:72b` (49 GB) · `llama4:scout` (MoE, 67 GB) · `llama4:maverick` (MoE, 245 GB, mehrere GPUs) |
+
+Angaben in `code` sind direkt in Ollama verfügbar (mit Download-Größe), die voll offenen Modelle bisher nur über Hugging Face.
 
 *MoE* (Mixture of Experts) heißt: Das Modell ist groß, rechnet aber pro Schritt nur mit einem Teil davon – es braucht viel Speicher, läuft aber schneller als ein gleich großes „dichtes" Modell.
 
-**Truly Open mit Bildverarbeitung:** die Molmo-Familie von Ai2 mit offenen Bild-Trainingsdaten. Vollständig offen bis zum Sprachmodell darunter ist **Molmo 2-O (7B)** auf OLMo-Basis; nutzbar über Hugging Face. Laut Projektseite verarbeitet auch **Apertus** ab Version 1.5 Bilder.
+**Truly Open mit Bildverarbeitung** gibt es bisher nur wenig: **Molmo 2-O 7B** von Ai2 baut auf dem vollständig offenen Olmo 3 auf (Bild-Trainingsdaten offen, Trainingscode angekündigt), **Apertus 1.5** (Juli 2026, 8B und 70B) verarbeitet seit dieser Version auch Bilder. Die übrigen Molmo-Modelle beruhen auf Qwen – offen sind dort nur die Bilddaten. Olmo 3 selbst (`olmo-3:7b`, `olmo-3:32b`) gibt es in Ollama, allerdings nur für Text.
 
 **Ohne eigene Hardware:** wissenschaftliche Rechenzentren und Dienste (z. B. GWDG/KISSKI, KI:connect an Hochschulen), Hugging Face Inference Endpoints. Dann gilt aber wieder: Die Daten verlassen das Haus.
 
