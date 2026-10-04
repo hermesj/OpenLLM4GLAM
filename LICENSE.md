@@ -4,7 +4,7 @@ Dieses Material ist offen nachnutzbar (OER). Für die einzelnen Bestandteile gel
 
 | Bestandteil | Lizenz |
 |---|---|
-| Texte (`README.md`, `prompts.md`) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.de) – Jürgen Hermes |
+| Texte (`README.md`, `einfuehrung.md`, `prompts.md`) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.de) – Jürgen Hermes |
 | Skripte (`bilder_auswerten.py`, Starter) | MIT, siehe [`LICENSE-CODE`](LICENSE-CODE) |
 | Bilder (`bilder/`) | gemeinfrei: CC0 bzw. Public Domain Mark 1.0, Einzelnachweise in [`bildnachweise.csv`](bildnachweise.csv) |
 

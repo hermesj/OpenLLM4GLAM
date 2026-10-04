@@ -7,7 +7,7 @@ Material für eine Barcamp-Session auf der Tagung [**„Out of Frame – 25 Jahr
 
 > *English:* Hands-on material for a barcamp session at the prometheus conference *Out of Frame* (Cologne, 30 Sep – 2 Oct 2026), aimed at people from galleries, libraries, archives and museums (GLAM). Participants run an open-weight vision language model (Qwen2.5-VL) locally on their own laptops with [Ollama](https://ollama.com), and use it to tag and classify a small set of public-domain images. The material is in German; the setup steps below work the same in any language.
 
-Dieses Repository enthält alles, was du für die Barcamp-Session brauchst – außer Ollama und dem Modell selbst, die du über die Links und Befehle unten herunterlädst. **Am besten installierst du beides schon vor der Session**, denn das Modell ist 3–7 GB groß. Kurzentschlossene können es aber auch den Anfang der Session nutzen, falls das WLAN einknickt, gibt es vor Ort auch USB-Sticks mit den erforderlichen Dateien.
+Dieses Repository enthält alles, was du für die Barcamp-Session brauchst – außer Ollama und dem Modell selbst, die du über die Links und Befehle unten herunterlädst. **Am besten installierst du beides schon vor der Session**, denn das Modell ist 3–7 GB groß. Kurzentschlossene können auch den Anfang der Session dafür nutzen. Falls das WLAN einknickt, gibt es vor Ort USB-Sticks mit allen erforderlichen Dateien.
 
 ## Was du brauchst
 
@@ -90,7 +90,7 @@ Die Prompts, mit denen wir im Workshop arbeiten, stehen in [`prompts.md`](prompt
 
 ## Automatische Auswertung aller Bilder
 
-Das Skript `bilder_auswerten.py` schickt alle Bilder an das Modell und schreibt Kategorie und Schlagwörter in eine CSV-Datei (`ergebnisse_<Datum>_<Uhrzeit>.csv`). Ollama muss dabei laufen.
+Das Skript `bilder_auswerten.py` schickt alle Bilder an das Modell und schreibt Kategorie und Schlagwörter in eine CSV-Datei (`ergebnisse_<Datum>_<Uhrzeit>_<Modell>.csv`). Ollama muss dabei laufen.
 
 - **Mac:** Doppelklick auf `bilder_auswerten.command` (falls macOS blockiert: Rechtsklick → Öffnen)
 - **Windows:** Doppelklick auf `bilder_auswerten_windows.bat` – braucht [Python](https://www.python.org/downloads/windows/)
